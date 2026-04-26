@@ -25,12 +25,12 @@ const values = [
 ];
 
 const team = [
-  { initials: "AT", name: "A. Turaga", role: "Chemistry Advisor" },
-  { initials: "MZ", name: "M. Zwanzig", role: "Sustainability" },
-  { initials: "JL", name: "J. Lin", role: "Operations" },
-  { initials: "SR", name: "S. Ramos", role: "R&D" },
-  { initials: "KP", name: "K. Patel", role: "Partnerships" },
-  { initials: "DN", name: "D. Nguyen", role: "Engineering" },
+  { initials: "E", name: "Eshu", role: "Co-founder" },
+  { initials: "A", name: "Akash", role: "Co-founder" },
+  { initials: "R", name: "Rian", role: "Co-founder" },
+  { initials: "S", name: "Sohum", role: "Co-founder" },
+  { initials: "A", name: "Anika", role: "Co-founder" },
+  { initials: "K", name: "Krish", role: "Co-founder" },
 ];
 
 const About = () => (
