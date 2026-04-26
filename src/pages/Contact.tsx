@@ -194,8 +194,8 @@ const Contact = () => {
             {
               icon: Mail,
               title: "Email us directly",
-              body: "hello@ecosorb.eco",
-              href: "mailto:hello@ecosorb.eco",
+              body: "ecosorb.gel@gamil.com",
+              href: "mailto:ecosorb.gel@gmail.com",
             },
             {
               icon: Building2,
