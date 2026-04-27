@@ -29,12 +29,12 @@ const values = [
 ];
 
 const team = [
-  { initials: "E", name: "Eshu", role: "Co-founder", photo: eshuPhoto as string | null },
-  { initials: "A", name: "Akash", role: "Co-founder", photo: akashPhoto },
-  { initials: "R", name: "Rian", role: "Co-founder", photo: null },
-  { initials: "S", name: "Sohum", role: "Co-founder", photo: sohumPhoto },
-  { initials: "A", name: "Anika", role: "Co-founder", photo: null },
-  { initials: "K", name: "Krish", role: "Co-founder", photo: krishPhoto },
+  { initials: "E", name: "Eshu", photo: eshuPhoto as string | null },
+  { initials: "A", name: "Akash", photo: akashPhoto },
+  { initials: "R", name: "Rian", photo: null },
+  { initials: "S", name: "Sohum", photo: sohumPhoto },
+  { initials: "A", name: "Anika", photo: null },
+  { initials: "K", name: "Krish", photo: krishPhoto },
 ];
 
 const About = () => (
