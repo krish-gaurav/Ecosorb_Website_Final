@@ -46,8 +46,8 @@ const methodSteps = [
 ];
 
 const headToHead = [
-  { label: "Ecosorb 70/30 — Kraft", value: "11.0%", best: true },
-  { label: "Ecosorb 70/30 — Tyvek", value: "12.4%" },
+  { label: "Ecosorb w/ Kraft", value: "11.0%", best: true },
+  { label: "Ecosorb w/ Tyvek", value: "12.4%" },
   { label: "Silica gel (control)", value: "14.5%" },
   { label: "Bentonite clay", value: "15.8%" },
 ];
@@ -231,8 +231,8 @@ const Science = () => (
         </p>
         <div className="space-y-3">
           {[
-            { pct: "70%", name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
-            { pct: "30%", name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
+            { name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
+            { name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
             { pct: "0%", name: "Binders / additives", body: "Pure granules. Nothing else needs to break down." },
           ].map((i) => (
             <div key={i.name} className="flex gap-4 bg-background border border-border rounded-xl p-5">
