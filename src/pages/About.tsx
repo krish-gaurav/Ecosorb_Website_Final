@@ -1,6 +1,7 @@
 import { PageHero, PageShell } from "@/components/layout/PageShell";
 import { Sprout, Leaf, Beaker, Recycle } from "lucide-react";
 import akashPhoto from "@/assets/team-akash.jpeg";
+import eshuPhoto from "@/assets/team-eshu.jpeg";
 
 const values = [
   {
@@ -26,7 +27,7 @@ const values = [
 ];
 
 const team = [
-  { initials: "E", name: "Eshu", role: "Co-founder", photo: null as string | null },
+  { initials: "E", name: "Eshu", role: "Co-founder", photo: eshuPhoto as string | null },
   { initials: "A", name: "Akash", role: "Co-founder", photo: akashPhoto },
   { initials: "R", name: "Rian", role: "Co-founder", photo: null },
   { initials: "S", name: "Sohum", role: "Co-founder", photo: null },
