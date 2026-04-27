@@ -53,7 +53,7 @@ const About = () => (
           </p>
           <p>
             We tried cow dung, chitosan, cellulose binders. Most failed. The one that didn't was elegantly simple:
-            <strong className="text-foreground"> 70% diatomaceous earth and 30% activated carbon</strong>, with no binder
+            <strong className="text-foreground"> diatomaceous earth and activated carbon</strong>, with no binder
             and Kraft-paper packaging. It outperforms silica gel and composts cleanly.
           </p>
           <p>
