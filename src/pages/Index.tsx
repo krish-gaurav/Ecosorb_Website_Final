@@ -101,9 +101,9 @@ const Index = () => (
               </div>
             </div>
           </div>
-          <div className="text-base font-bold mb-1">Ecosorb 70/30 Desiccant</div>
+          <div className="text-base font-bold mb-1">Ecosorb Desiccant</div>
           <div className="text-sm text-muted-foreground mb-4">
-            70% Diatomaceous Earth · 30% Activated Carbon · Kraft packaging
+            Diatomaceous Earth · Activated Carbon · Kraft packaging
           </div>
           <div className="bg-muted rounded-lg p-3 grid grid-cols-3 gap-2 text-center">
             <div>
@@ -158,8 +158,8 @@ const Index = () => (
           <div className="section-label">The Solution</div>
           <h2 className="section-title">Meet <em>Ecosorb</em>.</h2>
           <p className="section-lead">
-            Ecosorb is a biodegradable desiccant made from <strong className="text-foreground">70% diatomaceous earth</strong> and{" "}
-            <strong className="text-foreground">30% activated carbon</strong>, delivering strong moisture and odor control using sustainable materials.
+            Ecosorb is a biodegradable desiccant made from <strong className="text-foreground">diatomaceous earth</strong> and{" "}
+            <strong className="text-foreground">activated carbon</strong>, delivering strong moisture and odor control using sustainable materials.
           </p>
           <Link
             to="/product"
