@@ -16,7 +16,7 @@ export const SiteNav = () => {
   return (
     <header className="sticky top-0 z-50 bg-background border-b border-border shadow-[0_1px_8px_rgba(0,0,0,0.04)]">
       <div className="bg-brand-dark text-primary-foreground/85 text-center text-xs font-medium py-2 px-4 tracking-wide">
-        <strong className="text-brand-glow">New:</strong> Ecosorb 70/30 outperforms silica gel in independent lab testing —{" "}
+        <strong className="text-brand-glow">New:</strong> Ecosorb outperforms silica gel in independent lab testing —{" "}
         <strong className="text-brand-glow">11% moisture at 9 hours</strong> vs. 14.5% for silica gel.
       </div>
       <nav className="flex items-center justify-between px-6 lg:px-10 h-16 max-w-[1400px] mx-auto">
