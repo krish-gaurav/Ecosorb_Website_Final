@@ -28,7 +28,7 @@ export const SiteFooter = () => {
           <h4 className="text-white text-sm font-semibold mb-3 font-sans">Get in touch</h4>
           <ul className="space-y-2 text-sm">
             <li><Link to="/contact" className="hover:text-brand-glow">Contact / Inquiry</Link></li>
-            <li><a href="mailto:hello@ecosorb.eco" className="hover:text-brand-glow">hello@ecosorb.eco</a></li>
+             <li><a href="mailto:ecosorb.gel@gmail.com" className="hover:text-brand-glow">ecosorb.gel@gmail.com</a></li>
           </ul>
         </div>
         <div>
