@@ -139,7 +139,7 @@ const Product = () => (
           <div className="bg-background border border-border rounded-xl p-6 shadow-elegant">
             <div className="flex items-baseline justify-between mb-3">
               <h3 className="font-display font-black text-xl text-brand-dark">Activated Carbon</h3>
-              <span className="font-display font-black text-3xl text-brand-mid">30%</span>
+              <span className="font-display font-black text-3xl text-brand-mid"></span>
             </div>
             <ul className="space-y-1.5 text-sm text-muted-foreground">
               <li className="flex gap-2"><span className="text-brand-light">✓</span> Traps odor molecules at the source</li>
