@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageHero, PageShell } from "@/components/layout/PageShell";
-import { Footprints, Package, UtensilsCrossed, Check, X, AlertTriangle, ArrowRight } from "lucide-react";
+import { Footprints, Package, UtensilsCrossed, Check, X, AlertTriangle, ArrowRight, Info } from "lucide-react";
 
 const useCases = [
   { icon: Footprints, title: "Shoe Packaging", body: "Keeps footwear dry and odor-free in retail boxes and storage." },
@@ -8,16 +8,87 @@ const useCases = [
   { icon: UtensilsCrossed, title: "Food Storage", body: "Future target — food-safe formulations for pantry and dry goods." },
 ];
 
-const comparison: { feature: string; eco: "yes" | "no" | "warn"; silica: "yes" | "no" | "warn" }[] = [
-  { feature: "Biodegradable", eco: "yes", silica: "no" },
-  { feature: "Odor Control", eco: "yes", silica: "no" },
-  { feature: "Non-toxic", eco: "yes", silica: "warn" },
-  { feature: "Moisture Performance", eco: "yes", silica: "yes" },
-  { feature: "Compostable Packaging", eco: "yes", silica: "no" },
-  { feature: "Locally Sourced (USA)", eco: "yes", silica: "no" },
+type Status = "yes" | "no" | "warn";
+type Row = {
+  feature: string;
+  ecoStatus: Status;
+  ecoValue: string;
+  silicaStatus: Status;
+  silicaValue: string;
+  note?: number;
+};
+
+const comparison: Row[] = [
+  {
+    feature: "Moisture absorption (9 h)",
+    ecoStatus: "yes",
+    ecoValue: "11.0% RH — best in test",
+    silicaStatus: "warn",
+    silicaValue: "14.5% RH",
+    note: 1,
+  },
+  {
+    feature: "Moisture absorption (2 h)",
+    ecoStatus: "yes",
+    ecoValue: "11.1% RH",
+    silicaStatus: "warn",
+    silicaValue: "14.6% RH",
+    note: 1,
+  },
+  {
+    feature: "Odor control",
+    ecoStatus: "yes",
+    ecoValue: "Measurable reduction (3-evaluator panel)",
+    silicaStatus: "no",
+    silicaValue: "None — silica is odor-inert",
+    note: 2,
+  },
+  {
+    feature: "Biodegradable / compostable",
+    ecoStatus: "yes",
+    ecoValue: "Granules + Kraft pouch fully compostable",
+    silicaStatus: "no",
+    silicaValue: "Non-biodegradable, landfill-bound",
+  },
+  {
+    feature: "Non-toxic / food-safe",
+    ecoStatus: "yes",
+    ecoValue: "Food-safe ingredients, no warning label",
+    silicaStatus: "warn",
+    silicaValue: '"Do not eat" labelled, choking hazard',
+  },
+  {
+    feature: "Production water use",
+    ecoStatus: "yes",
+    ecoValue: "Low — dry granular process",
+    silicaStatus: "no",
+    silicaValue: "Up to 40 kg water per kg produced",
+    note: 3,
+  },
+  {
+    feature: "Production CO₂ footprint",
+    ecoStatus: "yes",
+    ecoValue: "Minimal — no high-temp synthesis",
+    silicaStatus: "no",
+    silicaValue: "~4.4 kg CO₂ per kg (dry method)",
+    note: 3,
+  },
+  {
+    feature: "Sourcing",
+    ecoStatus: "yes",
+    ecoValue: "Pacific Northwest (USA), short supply chain",
+    silicaStatus: "warn",
+    silicaValue: "Predominantly imported from Asia",
+  },
 ];
 
-const Cell = ({ kind }: { kind: "yes" | "no" | "warn" }) => {
+const footnotes = [
+  "Moisture readings from sealed 32 oz mason-jar test, 22 °C ± 1 °C, standardized water load at t = 0, triplicate jars. Lower % is better. Full methodology on the Science & Testing page.",
+  "Odor uptake assessed qualitatively by a three-evaluator blind panel; not a quantified ppm measurement.",
+  "Silica gel production figures sourced from published lifecycle analyses of the wet (sodium silicate) and dry (precipitated silica) manufacturing routes. Ranges vary by facility.",
+];
+
+const Cell = ({ kind }: { kind: Status }) => {
   if (kind === "yes")
     return (
       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-pale text-brand-mid">
