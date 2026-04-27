@@ -13,7 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
-import { Mail, MapPin, MessageSquare, Building2 } from "lucide-react";
+import { Mail, MapPin, MessageSquare, Building2, CheckCircle2 } from "lucide-react";
 
 const inquirySchema = z.object({
   name: z.string().trim().min(1, "Please enter your name").max(100),
@@ -34,6 +34,7 @@ const inquiryTypes = [
 
 const Contact = () => {
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState({
     name: "",
@@ -47,6 +48,7 @@ const Contact = () => {
   const update = (k: keyof typeof form, v: string) => {
     setForm((f) => ({ ...f, [k]: v }));
     setErrors((e) => ({ ...e, [k]: "" }));
+    if (success) setSuccess(false);
   };
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -64,6 +66,7 @@ const Contact = () => {
     // Simulated send — replace with backend integration later
     await new Promise((r) => setTimeout(r, 700));
     setSubmitting(false);
+    setSuccess(true);
     toast({
       title: "Inquiry received",
       description: "Thanks — we'll reply within 1–2 business days.",
@@ -76,6 +79,7 @@ const Contact = () => {
       volume: "",
       message: "",
     });
+    setErrors({});
   };
 
   return (
@@ -91,6 +95,23 @@ const Contact = () => {
           onSubmit={onSubmit}
           className="bg-background border border-border rounded-2xl p-8 md:p-10 shadow-elegant space-y-6"
         >
+          {success && (
+            <div
+              role="status"
+              aria-live="polite"
+              className="flex items-start gap-3 rounded-xl border border-brand-mid/30 bg-brand-mid/10 p-4"
+            >
+              <CheckCircle2 className="w-5 h-5 text-brand-mid mt-0.5 shrink-0" />
+              <div className="space-y-1">
+                <p className="text-sm font-semibold text-brand-dark">
+                  Inquiry sent successfully
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Thanks for reaching out — we'll reply within 1–2 business days. Feel free to send another message below.
+                </p>
+              </div>
+            </div>
+          )}
           <div className="grid sm:grid-cols-2 gap-5">
             <div className="space-y-2">
               <Label htmlFor="name">Name *</Label>
