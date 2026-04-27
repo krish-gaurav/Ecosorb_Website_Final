@@ -4,6 +4,7 @@ import akashPhoto from "@/assets/team-akash.jpeg";
 import eshuPhoto from "@/assets/team-eshu.jpeg";
 import sohumPhoto from "@/assets/team-sohum.jpeg";
 import krishPhoto from "@/assets/team-krish.png";
+import rianPhoto from "@/assets/team-rian.png";
 
 const values = [
   {
@@ -31,7 +32,7 @@ const values = [
 const team = [
   { initials: "E", name: "Eshu", photo: eshuPhoto as string | null },
   { initials: "A", name: "Akash", photo: akashPhoto },
-  { initials: "R", name: "Rian", photo: null },
+  { initials: "R", name: "Rian", photo: rianPhoto },
   { initials: "S", name: "Sohum", photo: sohumPhoto },
   { initials: "A", name: "Anika", photo: null },
   { initials: "K", name: "Krish", photo: krishPhoto },
@@ -133,7 +134,6 @@ const About = () => (
               )}
             </div>
             <div className="mt-3 text-sm font-semibold">{m.name}</div>
-            <div className="text-xs text-muted-foreground">{m.role}</div>
           </div>
         ))}
       </div>
