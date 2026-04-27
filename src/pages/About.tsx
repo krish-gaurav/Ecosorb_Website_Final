@@ -72,7 +72,7 @@ const About = () => (
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-background border border-border rounded-xl p-5">
             <div className="text-xs font-bold uppercase tracking-wide text-brand-mid mb-1">Founded</div>
-            <div className="font-display font-black text-3xl text-brand-dark">2024</div>
+            <div className="font-display font-black text-3xl text-brand-dark">2025</div>
           </div>
           <div className="bg-background border border-border rounded-xl p-5">
             <div className="text-xs font-bold uppercase tracking-wide text-brand-mid mb-1">Based in</div>
@@ -80,11 +80,11 @@ const About = () => (
           </div>
           <div className="bg-background border border-border rounded-xl p-5">
             <div className="text-xs font-bold uppercase tracking-wide text-brand-mid mb-1">Formulations tested</div>
-            <div className="font-display font-black text-3xl text-brand-dark">12+</div>
+            <div className="font-display font-black text-3xl text-brand-dark">4+</div>
           </div>
           <div className="bg-background border border-border rounded-xl p-5">
             <div className="text-xs font-bold uppercase tracking-wide text-brand-mid mb-1">Lab hours</div>
-            <div className="font-display font-black text-3xl text-brand-dark">400+</div>
+            <div className="font-display font-black text-3xl text-brand-dark">20+</div>
           </div>
         </div>
         <blockquote className="mt-6 border-l-4 border-brand-light bg-background rounded-r-lg p-4 italic text-sm text-muted-foreground">
