@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { PageHero, PageShell } from "@/components/layout/PageShell";
-import { Footprints, Package, UtensilsCrossed, Check, X, AlertTriangle, ArrowRight } from "lucide-react";
+import { Footprints, Package, UtensilsCrossed, Check, X, AlertTriangle, ArrowRight, Info } from "lucide-react";
 
 const useCases = [
   { icon: Footprints, title: "Shoe Packaging", body: "Keeps footwear dry and odor-free in retail boxes and storage." },
@@ -8,16 +8,87 @@ const useCases = [
   { icon: UtensilsCrossed, title: "Food Storage", body: "Future target — food-safe formulations for pantry and dry goods." },
 ];
 
-const comparison: { feature: string; eco: "yes" | "no" | "warn"; silica: "yes" | "no" | "warn" }[] = [
-  { feature: "Biodegradable", eco: "yes", silica: "no" },
-  { feature: "Odor Control", eco: "yes", silica: "no" },
-  { feature: "Non-toxic", eco: "yes", silica: "warn" },
-  { feature: "Moisture Performance", eco: "yes", silica: "yes" },
-  { feature: "Compostable Packaging", eco: "yes", silica: "no" },
-  { feature: "Locally Sourced (USA)", eco: "yes", silica: "no" },
+type Status = "yes" | "no" | "warn";
+type Row = {
+  feature: string;
+  ecoStatus: Status;
+  ecoValue: string;
+  silicaStatus: Status;
+  silicaValue: string;
+  note?: number;
+};
+
+const comparison: Row[] = [
+  {
+    feature: "Moisture absorption (9 h)",
+    ecoStatus: "yes",
+    ecoValue: "11.0% RH — best in test",
+    silicaStatus: "warn",
+    silicaValue: "14.5% RH",
+    note: 1,
+  },
+  {
+    feature: "Moisture absorption (2 h)",
+    ecoStatus: "yes",
+    ecoValue: "11.1% RH",
+    silicaStatus: "warn",
+    silicaValue: "14.6% RH",
+    note: 1,
+  },
+  {
+    feature: "Odor control",
+    ecoStatus: "yes",
+    ecoValue: "Measurable reduction (3-evaluator panel)",
+    silicaStatus: "no",
+    silicaValue: "None — silica is odor-inert",
+    note: 2,
+  },
+  {
+    feature: "Biodegradable / compostable",
+    ecoStatus: "yes",
+    ecoValue: "Granules + Kraft pouch fully compostable",
+    silicaStatus: "no",
+    silicaValue: "Non-biodegradable, landfill-bound",
+  },
+  {
+    feature: "Non-toxic / food-safe",
+    ecoStatus: "yes",
+    ecoValue: "Food-safe ingredients, no warning label",
+    silicaStatus: "warn",
+    silicaValue: '"Do not eat" labelled, choking hazard',
+  },
+  {
+    feature: "Production water use",
+    ecoStatus: "yes",
+    ecoValue: "Low — dry granular process",
+    silicaStatus: "no",
+    silicaValue: "Up to 40 kg water per kg produced",
+    note: 3,
+  },
+  {
+    feature: "Production CO₂ footprint",
+    ecoStatus: "yes",
+    ecoValue: "Minimal — no high-temp synthesis",
+    silicaStatus: "no",
+    silicaValue: "~4.4 kg CO₂ per kg (dry method)",
+    note: 3,
+  },
+  {
+    feature: "Sourcing",
+    ecoStatus: "yes",
+    ecoValue: "Pacific Northwest (USA), short supply chain",
+    silicaStatus: "warn",
+    silicaValue: "Predominantly imported from Asia",
+  },
 ];
 
-const Cell = ({ kind }: { kind: "yes" | "no" | "warn" }) => {
+const footnotes = [
+  "Moisture readings from sealed 32 oz mason-jar test, 22 °C ± 1 °C, standardized water load at t = 0, triplicate jars. Lower % is better. Full methodology on the Science & Testing page.",
+  "Odor uptake assessed qualitatively by a three-evaluator blind panel; not a quantified ppm measurement.",
+  "Silica gel production figures sourced from published lifecycle analyses of the wet (sodium silicate) and dry (precipitated silica) manufacturing routes. Ranges vary by facility.",
+];
+
+const Cell = ({ kind }: { kind: Status }) => {
   if (kind === "yes")
     return (
       <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-brand-pale text-brand-mid">
@@ -129,24 +200,59 @@ const Product = () => (
       <p className="section-lead">Same job. Better materials. Lower environmental cost.</p>
 
       <div className="overflow-x-auto bg-background border border-border rounded-2xl shadow-elegant">
-        <table className="w-full text-left">
+        <table className="w-full text-left min-w-[720px]">
           <thead className="bg-brand-tint border-b border-border">
             <tr>
-              <th className="py-4 px-6 text-sm font-bold text-brand-dark uppercase tracking-wide">Feature</th>
-              <th className="py-4 px-6 text-sm font-bold text-brand-dark uppercase tracking-wide text-center">Ecosorb</th>
-              <th className="py-4 px-6 text-sm font-bold text-muted-foreground uppercase tracking-wide text-center">Silica Gel</th>
+              <th className="py-4 px-6 text-xs font-bold text-brand-dark uppercase tracking-wide w-[28%]">
+                Performance criterion
+              </th>
+              <th className="py-4 px-6 text-xs font-bold text-brand-dark uppercase tracking-wide">
+                Ecosorb <span className="text-muted-foreground font-medium normal-case">(70/30, Kraft)</span>
+              </th>
+              <th className="py-4 px-6 text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                Silica Gel <span className="font-medium normal-case">(industry standard)</span>
+              </th>
             </tr>
           </thead>
           <tbody>
             {comparison.map((row, i) => (
               <tr key={row.feature} className={i !== comparison.length - 1 ? "border-b border-border" : ""}>
-                <td className="py-4 px-6 text-sm font-medium text-foreground">{row.feature}</td>
-                <td className="py-4 px-6 text-center"><Cell kind={row.eco} /></td>
-                <td className="py-4 px-6 text-center"><Cell kind={row.silica} /></td>
+                <td className="py-4 px-6 align-top text-sm font-semibold text-foreground">
+                  {row.feature}
+                  {row.note && (
+                    <sup className="ml-1 text-[10px] font-bold text-brand-mid">[{row.note}]</sup>
+                  )}
+                </td>
+                <td className="py-4 px-6 align-top">
+                  <div className="flex items-start gap-3">
+                    <Cell kind={row.ecoStatus} />
+                    <span className="text-sm text-foreground leading-snug pt-1">{row.ecoValue}</span>
+                  </div>
+                </td>
+                <td className="py-4 px-6 align-top">
+                  <div className="flex items-start gap-3">
+                    <Cell kind={row.silicaStatus} />
+                    <span className="text-sm text-muted-foreground leading-snug pt-1">{row.silicaValue}</span>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-6 bg-brand-tint/60 border border-border rounded-xl p-5">
+        <div className="flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-[1.5px] mb-3">
+          <Info className="w-4 h-4 text-brand-mid" /> Test conditions & assumptions
+        </div>
+        <ol className="space-y-2 text-xs text-muted-foreground leading-relaxed list-none">
+          {footnotes.map((note, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="font-bold text-brand-mid shrink-0">[{i + 1}]</span>
+              <span>{note}</span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div className="mt-10 flex flex-wrap gap-3">

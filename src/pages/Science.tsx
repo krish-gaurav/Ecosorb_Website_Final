@@ -1,5 +1,26 @@
 import { PageHero, PageShell } from "@/components/layout/PageShell";
 import { CheckCircle2, FlaskConical, LineChart, Microscope, Package } from "lucide-react";
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart as ReLineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+
+const timelineData = [
+  { time: "0h", ecosorb: 8.2, silica: 8.2 },
+  { time: "0.5h", ecosorb: 9.6, silica: 11.4 },
+  { time: "1h", ecosorb: 10.4, silica: 13.1 },
+  { time: "2h", ecosorb: 11.1, silica: 14.6 },
+  { time: "4h", ecosorb: 11.0, silica: 14.7 },
+  { time: "9h", ecosorb: 11.0, silica: 14.5 },
+  { time: "24h", ecosorb: 10.8, silica: 14.4 },
+  { time: "72h", ecosorb: 10.6, silica: 14.3 },
+];
 
 const methodSteps = [
   {
@@ -92,6 +113,93 @@ const Science = () => (
           </div>
           <div className="bg-brand-pale border border-brand-light/40 rounded-lg p-3 text-sm font-semibold text-brand-mid">
             ✓ Only desiccant in the test with measurable odor reduction
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-10 bg-background border border-border rounded-2xl p-6 md:p-8 shadow-elegant">
+        <div className="flex flex-wrap items-baseline justify-between gap-2 mb-1">
+          <h3 className="font-display font-black text-2xl text-brand-dark">
+            Moisture vs. Time
+          </h3>
+          <div className="text-xs uppercase tracking-[1.5px] text-muted-foreground font-semibold">
+            Sealed 32 oz mason jar · 22 °C
+          </div>
+        </div>
+        <p className="text-sm text-muted-foreground mb-6 max-w-2xl">
+          Internal moisture (% RH) recorded across an 72-hour test window. Lower values mean a drier
+          container — Ecosorb separates from silica gel within the first hour and holds the gap.
+        </p>
+        <div className="h-[340px] w-full">
+          <ResponsiveContainer width="100%" height="100%">
+            <ReLineChart data={timelineData} margin={{ top: 10, right: 20, left: -10, bottom: 0 }}>
+              <CartesianGrid stroke="hsl(var(--border))" strokeDasharray="3 3" vertical={false} />
+              <XAxis
+                dataKey="time"
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={{ stroke: "hsl(var(--border))" }}
+              />
+              <YAxis
+                stroke="hsl(var(--muted-foreground))"
+                fontSize={12}
+                tickLine={false}
+                axisLine={{ stroke: "hsl(var(--border))" }}
+                domain={[7, 16]}
+                tickFormatter={(v) => `${v}%`}
+                label={{
+                  value: "Moisture (% RH)",
+                  angle: -90,
+                  position: "insideLeft",
+                  offset: 15,
+                  style: { fill: "hsl(var(--muted-foreground))", fontSize: 12 },
+                }}
+              />
+              <Tooltip
+                contentStyle={{
+                  background: "hsl(var(--background))",
+                  border: "1px solid hsl(var(--border))",
+                  borderRadius: 8,
+                  fontSize: 12,
+                }}
+                formatter={(value: number, name: string) => [
+                  `${value}%`,
+                  name === "ecosorb" ? "Ecosorb (Kraft)" : "Silica gel",
+                ]}
+                labelFormatter={(label) => `Elapsed: ${label}`}
+              />
+              <Legend
+                wrapperStyle={{ fontSize: 12, paddingTop: 8 }}
+                formatter={(value) =>
+                  value === "ecosorb" ? "Ecosorb (Kraft)" : "Silica gel (control)"
+                }
+              />
+              <Line
+                type="monotone"
+                dataKey="ecosorb"
+                stroke="hsl(var(--green-mid))"
+                strokeWidth={3}
+                dot={{ r: 4, fill: "hsl(var(--green-mid))" }}
+                activeDot={{ r: 6 }}
+              />
+              <Line
+                type="monotone"
+                dataKey="silica"
+                stroke="hsl(var(--muted-foreground))"
+                strokeWidth={2}
+                strokeDasharray="6 4"
+                dot={{ r: 3, fill: "hsl(var(--muted-foreground))" }}
+              />
+            </ReLineChart>
+          </ResponsiveContainer>
+        </div>
+        <div className="mt-4 grid sm:grid-cols-2 gap-3 text-xs text-muted-foreground">
+          <div className="bg-brand-pale/60 border border-brand-light/40 rounded-lg px-3 py-2 text-brand-dark">
+            <strong className="text-brand-mid">@ 2h:</strong> Ecosorb 11.1% vs. silica 14.6% — a 3.5 pt gap.
+          </div>
+          <div className="bg-muted border border-border rounded-lg px-3 py-2">
+            Triplicate jars per condition. Readings averaged. Raw datasets available on request.
           </div>
         </div>
       </div>
