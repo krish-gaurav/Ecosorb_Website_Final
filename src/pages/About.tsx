@@ -1,5 +1,6 @@
 import { PageHero, PageShell } from "@/components/layout/PageShell";
 import { Sprout, Leaf, Beaker, Recycle } from "lucide-react";
+import akashPhoto from "@/assets/team-akash.jpeg";
 
 const values = [
   {
@@ -25,12 +26,12 @@ const values = [
 ];
 
 const team = [
-  { initials: "E", name: "Eshu", role: "Co-founder" },
-  { initials: "A", name: "Akash", role: "Co-founder" },
-  { initials: "R", name: "Rian", role: "Co-founder" },
-  { initials: "S", name: "Sohum", role: "Co-founder" },
-  { initials: "A", name: "Anika", role: "Co-founder" },
-  { initials: "K", name: "Krish", role: "Co-founder" },
+  { initials: "E", name: "Eshu", role: "Co-founder", photo: null as string | null },
+  { initials: "A", name: "Akash", role: "Co-founder", photo: akashPhoto },
+  { initials: "R", name: "Rian", role: "Co-founder", photo: null },
+  { initials: "S", name: "Sohum", role: "Co-founder", photo: null },
+  { initials: "A", name: "Anika", role: "Co-founder", photo: null },
+  { initials: "K", name: "Krish", role: "Co-founder", photo: null },
 ];
 
 const About = () => (
@@ -120,9 +121,13 @@ const About = () => (
       </p>
       <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mt-6">
         {team.map((m) => (
-          <div key={m.initials} className="text-center">
-            <div className="w-18 h-18 mx-auto rounded-full bg-brand-pale border-2 border-border flex items-center justify-center font-display font-black text-xl text-brand-dark aspect-square">
-              {m.initials}
+          <div key={m.name} className="text-center">
+            <div className="w-18 h-18 mx-auto rounded-full bg-brand-pale border-2 border-border flex items-center justify-center font-display font-black text-xl text-brand-dark aspect-square overflow-hidden">
+              {m.photo ? (
+                <img src={m.photo} alt={`${m.name}, Co-founder of Ecosorb`} className="w-full h-full object-cover" />
+              ) : (
+                m.initials
+              )}
             </div>
             <div className="mt-3 text-sm font-semibold">{m.name}</div>
             <div className="text-xs text-muted-foreground">{m.role}</div>
