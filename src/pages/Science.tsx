@@ -229,6 +229,22 @@ const Science = () => (
           Iterating away from cow dung, chitosan, and cellulose binders led us to a granular, binder-free format —
           simpler to produce and fully compostable at end of life.
         </p>
+        <div className="space-y-3">
+          {[
+            { name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
+            { name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
+            { name: "Binders / additives", body: "Pure granules. Nothing else needs to break down." },
+          ].map((i) => (
+            <div key={i.name} className="flex gap-4 bg-background border border-border rounded-xl p-5">
+              <div className="font-display font-black text-3xl text-brand-dark w-20 shrink-0">{i.pct}</div>
+              <div>
+                <div className="font-bold">{i.name}</div>
+                <div className="text-sm text-muted-foreground">{i.body}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="bg-brand-dark rounded-2xl p-8 text-primary-foreground">
         <div className="flex items-center gap-2 text-brand-glow text-sm font-semibold mb-4">
