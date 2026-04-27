@@ -128,7 +128,7 @@ const Product = () => (
           <div className="bg-background border border-border rounded-xl p-6 shadow-elegant">
             <div className="flex items-baseline justify-between mb-3">
               <h3 className="font-display font-black text-xl text-brand-dark">Diatomaceous Earth</h3>
-              <span className="font-display font-black text-3xl text-brand-mid">70%</span>
+              <span className="font-display font-black text-3xl text-brand-mid"></span>
             </div>
             <ul className="space-y-1.5 text-sm text-muted-foreground">
               <li className="flex gap-2"><span className="text-brand-light">✓</span> Biodegradable, returns cleanly to soil</li>
@@ -156,7 +156,7 @@ const Product = () => (
           <div className="w-44 h-56 rounded-lg bg-gradient-to-br from-brand-mid to-brand-dark flex flex-col items-center justify-center shadow-[0_16px_50px_rgba(26,74,46,0.35)] relative p-6 text-center">
             <div className="text-[10px] uppercase tracking-[2px] text-brand-glow mb-2">Do Compost</div>
             <div className="font-display font-black text-primary-foreground text-2xl leading-none mb-3">Ecosorb</div>
-            <div className="text-[10px] text-primary-foreground/70">70 / 30 · Kraft</div>
+            <div className="text-[10px] text-primary-foreground/70">· Kraft</div>
           </div>
         </div>
         <div className="grid grid-cols-3 gap-3 text-center">
@@ -207,7 +207,7 @@ const Product = () => (
                 Performance criterion
               </th>
               <th className="py-4 px-6 text-xs font-bold text-brand-dark uppercase tracking-wide">
-                Ecosorb <span className="text-muted-foreground font-medium normal-case">(70/30, Kraft)</span>
+                Ecosorb <span className="text-muted-foreground font-medium normal-case">(Kraft)</span>
               </th>
               <th className="py-4 px-6 text-xs font-bold text-muted-foreground uppercase tracking-wide">
                 Silica Gel <span className="font-medium normal-case">(industry standard)</span>
