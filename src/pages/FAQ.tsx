@@ -13,7 +13,7 @@ const groups = [
     items: [
       {
         q: "What is Ecosorb made of?",
-        a: "70% diatomaceous earth and 30% activated carbon — both biodegradable and food-safe. There are no binders, dyes, or synthetic additives.",
+        a: "Diatomaceous earth and activated carbon — both biodegradable and food-safe. There are no binders, dyes, or synthetic additives.",
       },
       {
         q: "Is it safe if a child or pet eats one?",
