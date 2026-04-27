@@ -200,24 +200,59 @@ const Product = () => (
       <p className="section-lead">Same job. Better materials. Lower environmental cost.</p>
 
       <div className="overflow-x-auto bg-background border border-border rounded-2xl shadow-elegant">
-        <table className="w-full text-left">
+        <table className="w-full text-left min-w-[720px]">
           <thead className="bg-brand-tint border-b border-border">
             <tr>
-              <th className="py-4 px-6 text-sm font-bold text-brand-dark uppercase tracking-wide">Feature</th>
-              <th className="py-4 px-6 text-sm font-bold text-brand-dark uppercase tracking-wide text-center">Ecosorb</th>
-              <th className="py-4 px-6 text-sm font-bold text-muted-foreground uppercase tracking-wide text-center">Silica Gel</th>
+              <th className="py-4 px-6 text-xs font-bold text-brand-dark uppercase tracking-wide w-[28%]">
+                Performance criterion
+              </th>
+              <th className="py-4 px-6 text-xs font-bold text-brand-dark uppercase tracking-wide">
+                Ecosorb <span className="text-muted-foreground font-medium normal-case">(70/30, Kraft)</span>
+              </th>
+              <th className="py-4 px-6 text-xs font-bold text-muted-foreground uppercase tracking-wide">
+                Silica Gel <span className="font-medium normal-case">(industry standard)</span>
+              </th>
             </tr>
           </thead>
           <tbody>
             {comparison.map((row, i) => (
               <tr key={row.feature} className={i !== comparison.length - 1 ? "border-b border-border" : ""}>
-                <td className="py-4 px-6 text-sm font-medium text-foreground">{row.feature}</td>
-                <td className="py-4 px-6 text-center"><Cell kind={row.eco} /></td>
-                <td className="py-4 px-6 text-center"><Cell kind={row.silica} /></td>
+                <td className="py-4 px-6 align-top text-sm font-semibold text-foreground">
+                  {row.feature}
+                  {row.note && (
+                    <sup className="ml-1 text-[10px] font-bold text-brand-mid">[{row.note}]</sup>
+                  )}
+                </td>
+                <td className="py-4 px-6 align-top">
+                  <div className="flex items-start gap-3">
+                    <Cell kind={row.ecoStatus} />
+                    <span className="text-sm text-foreground leading-snug pt-1">{row.ecoValue}</span>
+                  </div>
+                </td>
+                <td className="py-4 px-6 align-top">
+                  <div className="flex items-start gap-3">
+                    <Cell kind={row.silicaStatus} />
+                    <span className="text-sm text-muted-foreground leading-snug pt-1">{row.silicaValue}</span>
+                  </div>
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-6 bg-brand-tint/60 border border-border rounded-xl p-5">
+        <div className="flex items-center gap-2 text-brand-dark font-bold text-xs uppercase tracking-[1.5px] mb-3">
+          <Info className="w-4 h-4 text-brand-mid" /> Test conditions & assumptions
+        </div>
+        <ol className="space-y-2 text-xs text-muted-foreground leading-relaxed list-none">
+          {footnotes.map((note, i) => (
+            <li key={i} className="flex gap-2">
+              <span className="font-bold text-brand-mid shrink-0">[{i + 1}]</span>
+              <span>{note}</span>
+            </li>
+          ))}
+        </ol>
       </div>
 
       <div className="mt-10 flex flex-wrap gap-3">
