@@ -221,32 +221,8 @@ const Science = () => (
       </div>
     </section>
 
-    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20 grid md:grid-cols-2 gap-10 items-start">
-      <div>
-        <div className="section-label">Materials</div>
-        <h2 className="section-title">A two-ingredient blend, no binder.</h2>
-        <p className="section-lead">
-          Iterating away from cow dung, chitosan, and cellulose binders led us to a granular, binder-free format —
-          simpler to produce and fully compostable at end of life.
-        </p>
-        <div className="space-y-3">
-          {[
-            { pct: "70%", name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
-            { pct: "30%", name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
-            { pct: "0%", name: "Binders / additives", body: "Pure granules. Nothing else needs to break down." },
-          ].map((i) => (
-            <div key={i.name} className="flex gap-4 bg-background border border-border rounded-xl p-5">
-              <div className="font-display font-black text-3xl text-brand-dark w-20 shrink-0">{i.pct}</div>
-              <div>
-                <div className="font-bold">{i.name}</div>
-                <div className="text-sm text-muted-foreground">{i.body}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="bg-brand-dark rounded-2xl p-8 text-primary-foreground">
+    <section className="max-w-[1200px] mx-auto px-6 lg:px-10 py-20">
+      <div className="bg-brand-dark rounded-2xl p-8 text-primary-foreground max-w-2xl mx-auto">
         <div className="flex items-center gap-2 text-brand-glow text-sm font-semibold mb-4">
           <FlaskConical className="w-4 h-4" /> Independent validation
         </div>
