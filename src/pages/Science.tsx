@@ -231,9 +231,9 @@ const Science = () => (
         </p>
         <div className="space-y-3">
           {[
-            { name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
-            { name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
-            { name: "Binders / additives", body: "Pure granules. Nothing else needs to break down." },
+            { pct: "70%", name: "Diatomaceous Earth", body: "Fossil-derived, food-safe. Low-impact PNW mining." },
+            { pct: "30%", name: "Activated Carbon", body: "Made from agricultural waste with minimal water use." },
+            { pct: "0%", name: "Binders / additives", body: "Pure granules. Nothing else needs to break down." },
           ].map((i) => (
             <div key={i.name} className="flex gap-4 bg-background border border-border rounded-xl p-5">
               <div className="font-display font-black text-3xl text-brand-dark w-20 shrink-0">{i.pct}</div>
