@@ -5,6 +5,7 @@ import eshuPhoto from "@/assets/team-eshu.jpeg";
 import sohumPhoto from "@/assets/team-sohum.jpeg";
 import krishPhoto from "@/assets/team-krish.png";
 import rianPhoto from "@/assets/team-rian.png";
+import anikaPhoto from "@/assets/team-anika.jpeg";
 
 const values = [
   {
@@ -34,7 +35,7 @@ const team = [
   { initials: "A", name: "Akash", photo: akashPhoto },
   { initials: "R", name: "Rian", photo: rianPhoto },
   { initials: "S", name: "Sohum", photo: sohumPhoto },
-  { initials: "A", name: "Anika", photo: null },
+  { initials: "A", name: "Anika", photo: anikaPhoto },
   { initials: "K", name: "Krish", photo: krishPhoto },
 ];
 
